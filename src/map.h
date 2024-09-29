@@ -2215,7 +2215,6 @@ class map
 
         bool has_haulable_items( const tripoint_bub_ms &pos );
         std::vector<item_location> get_haulable_items( const tripoint_bub_ms &pos );
-
 #if defined(TILES)
         bool draw_points_cache_dirty = true;
         std::map<int, std::map<int, std::vector<tile_render_info>>> draw_points_cache;
@@ -2225,6 +2224,11 @@ class map
         std::multimap<point, formatted_text> overlay_strings_cache;
         color_block_overlay_container color_blocks_cache;
 #endif
+        /*world_prefix tells the game which world it should load data from*/
+        void set_world_prefix( std::string prefix );
+        std::string get_world_prefix();
+    private:
+        std::string world_prefix;
 };
 
 map &get_map();
