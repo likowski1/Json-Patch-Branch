@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "filesystem.h"
 #include "line.h"
+#include "map.h"
 #include "map_memory.h"
 #include "path_info.h"
 #include "string_formatter.h"
@@ -25,7 +26,11 @@ static tripoint_abs_sm mmr_to_sm_copy( const tripoint &p )
 
 static cata_path find_mm_dir()
 {
-    return PATH_INFO::player_base_save_path() + ".mm1";
+    std::string world_prefix = get_map().get_world_prefix();
+    if( world_prefix.empty() ) {
+        return PATH_INFO::player_base_save_path_path() / "mm1";
+    }
+    return PATH_INFO::player_base_save_path_path() / "worlds" /  world_prefix / ".mm1";
 }
 
 static cata_path find_region_path( const cata_path &dirname, const tripoint &p )
