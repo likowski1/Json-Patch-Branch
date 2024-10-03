@@ -60,6 +60,10 @@
 #include "type_id.h"
 #include "ui_manager.h"
 #include "cata_imgui.h"
+#include "multiworld.h"
+#if defined(MACOSX) || defined(__CYGWIN__)
+#   include <unistd.h> // getpid()
+#endif
 
 #if defined(EMSCRIPTEN)
 #include <emscripten.h>
