@@ -7219,8 +7219,8 @@ talk_effect_fun_t::func f_teleport( const JsonObject &jo, std::string_view membe
     }
     str_or_var dimension_prefix;
     if( jo.has_member( "dimension_prefix" ) ) {
-        dimension_prefix = get_str_or_var( jo.get_member( "dimension_prefix" ), "dimension_prefix", false,
-                                           "" );
+        dimension_prefix = get_str_or_var( jo.get_member( "dimension_prefix" ),
+                                           "dimension_prefix", false, "" );
     } else {
         dimension_prefix.str_val = "";
     }
@@ -7238,7 +7238,7 @@ talk_effect_fun_t::func f_teleport( const JsonObject &jo, std::string_view membe
             if( !prefix.empty() && prefix != g->get_dimension_prefix() ) {
                 successful_dimension_swap = g->travel_to_dimension( prefix );
             }
-            if( teleport::teleport_to_point( *teleporter, get_map().bub_from_abs( target_pos ), true, false,
+            if( teleport::teleport_to_point( *teleporter, get_map().get_bub( target_pos ), true, false,
                                              false, force, force_safe ) || successful_dimension_swap ) {
                 teleporter->add_msg_if_player( success_message.evaluate( d ) );
             } else {

@@ -892,7 +892,7 @@ conditional_t::func f_is_wearing( const JsonObject &jo, std::string_view member,
 conditional_t::func f_in_dimension( const JsonObject &jo, std::string_view member )
 {
     str_or_var dimension_prefix = get_str_or_var( jo.get_member( member ), member, true );
-    return [dimension_prefix]( dialogue const & d ) {
+    return [dimension_prefix]( const_dialogue const & d ) {
         return ( g->get_dimension_prefix() == dimension_prefix.evaluate( d ) );
     };
 }
