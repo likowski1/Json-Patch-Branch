@@ -1,0 +1,21 @@
+[
+{
+    "result": "lunge_mine",
+    "type": "recipe",
+    "activity_level": "MODERATE_EXERCISE",
+    "category": "CC_WEAPON",
+    "subcategory": "CSC_WEAPON_EXPLOSIVE",
+    "skill_used": "fabrication",
+    "time": "5 m",
+    "difficulty": 3,
+    "reversible": true,
+    "autolearn": true,
+    "qualities": [ { "id": "HAMMER", "level": 1 }, {"id": "DRILL", "level": 1  }  ],
+    "components": [
+      [ [ "stick_long", 1 ] ],
+      [ [ "landmine", 1 ] ],
+      [ [ "nail", 4 ] ],
+      [ [ "metal_funnel", 1 ] ]
+    ]
+  }
+]

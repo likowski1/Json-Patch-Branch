@@ -1,0 +1,59 @@
+[
+{
+    "id": "lunge_mine_spell",
+    "type": "SPELL",
+    "name": { "str": "Lunge!" },
+    "description": "Lunge with the Lunge Mine. you sure you want to do this?",
+    "valid_targets": [ "self", "ally", "hostile", "ground"],
+    "flags": ["NON_MAGICAL","LOUD"],
+   "effect": "attack",
+    "min_damage": 50,
+    "max_damage": 50,
+    "min_aoe": 45,
+    "max_aoe": 45,
+    "multiple_projectiles": 50,
+    "max_range": 10,
+    "min_range": 10,
+    "shape": "cone",
+    "extra_effects": [ {"id": "lunge_self"},{"id":"lunge_itemremoval"} ],
+    "damage_type":"stab",
+    "min_bash_scaling": 2.0, 
+    "max_bash_scaling": 2.0
+  },
+  {
+    "id": "lunge_self",
+    "type": "SPELL",
+    "name": { "str": "lunge_self" },
+    "description": "Lunge self damage efffect Effect to be used as a Extra Effect. if you see this ingame you have a issue",
+    "valid_targets": [ "self" ],
+    "flags": ["RANDOM_DAMAGE","NO_FAIL","SILENT","SPLIT_DAMAGE"],
+    "effect": "attack",
+    "min_damage": 25,
+    "max_damage": 50,
+    "shape": "blast",
+    "affected_body_parts": ["torso","arm_l","arm_r","hand_l","hand_r"],
+    "damage_type": "stab"
+  },
+  {
+    "id": "lunge_itemremoval",
+    "type": "SPELL",
+    "name": { "str": "lunge_itemremoval" },
+    "description": "Lunge item removal efffect Effect to be used as a Extra Effect. if you see this ingame you have a issue",
+    "valid_targets": [ "self" ],
+    "flags": ["NO_FAIL","SILENT"],
+    "effect": "effect_on_condition",
+    "shape": "blast",
+      "if": [ "u_has_weapon" ],
+      "then": [
+        {
+          "u_map_run_item_eocs": "all",
+          "search_data": [ { "id": "lunge_mine" } ],
+          "min_radius": 0,
+          "max_radius": 0,
+          "true_eocs": [ { "id": "EOC_ITEM_REMOVAL_SUCCESS", "effect": [ "npc_die", { "u_message": "after the Shock from the Explosion Goes away you are holding a Broken Stick. you throw it away.", "type": "bad" } ] } ],
+          "false_eocs": [ { "id": "EOC_ITEM_REMOVAL_FAIL", "effect": [ { "u_message": "Somehow your Lunge mine is Intact. Praise The Emperor!", "type": "good" } ] } ]
+        }
+      ],
+      "else": [ { "u_message": "Canceled" } ]
+    }
+  ]

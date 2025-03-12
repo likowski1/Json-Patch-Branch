@@ -1,0 +1,27 @@
+[
+{
+    "type": "GENERIC",
+    "id": "lunge_mine",
+    "symbol": "/",
+    "color": "brown",
+    "name": { "str": "Makeshift Lunge Mine" },
+    "description": "a Long Stick with a Metal Funnel on the End, Inside of said Funnel is a Anti-personnel Landmine. Use this if you have a Death-wish",
+    "material": [ "wood", "steel" ],
+    "flags": [ "TRADER_AVOID", "BOMB", "REACH_ATTACK","FRAGILE_MELEE","NONCONDUCTIVE","JAVELIN" ],
+    "weight": "5360 g",
+    "volume": "5500 ml",
+    "longest_side": "300 cm",
+    "looks_like": "stick",
+    "category": "weapons",
+    "melee_damage": { "bash": 12 },
+    "use_action": { 
+      "type":"cast_spell",
+      "menu_text": "Lunge!",
+      "spell_id": "lunge_mine_spell",
+      "need_wielding": true,
+      "mundane": true,
+      "no_fail": true,   
+      "level": 1
+    }
+  }
+]
